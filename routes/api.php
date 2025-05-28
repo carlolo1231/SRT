@@ -6,12 +6,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\SupplyRequestController;
+use App\Http\Controllers\DeliverySupplyController;
 
 /*
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-|   
+|
 | Here is where you can register API routes for your application.
 |
 */
@@ -45,7 +47,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add-roles', [RoleController::class, 'addRole']);
     Route::put('/edit-roles/{id}', [RoleController::class, 'editRole']);
     Route::delete('/delete-roles/{id}', [RoleController::class, 'deleteRole']);
- // Supply Request Management
+
+    // Supply Request Management
     Route::get('/get-supply-requests', [SupplyRequestController::class, 'index']);
     Route::post('/add-supply-request', [SupplyRequestController::class, 'store']);
     Route::put('/edit-supply-request/{id}', [SupplyRequestController::class, 'update']);
@@ -56,6 +59,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add-delivery-supply', [DeliverySupplyController::class, 'store']);
     Route::put('/edit-delivery-supply/{id}', [DeliverySupplyController::class, 'update']);
     Route::delete('/delete-delivery-supply/{id}', [DeliverySupplyController::class, 'destroy']);
+
     // Logout
     Route::post('/logout', [AuthenticationController::class, 'logout']);
 });

@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_supply_request', function (Blueprint $table) {
+        Schema::create('supply_requests', function (Blueprint $table) {
             $table->id();
+            $table->string('item_name');          // Name of the requested item
+            $table->integer('quantity');          // Quantity requested
+            $table->string('requested_by');       // Who requested it
+            $table->date('request_date');         // Date of request
+            $table->string('status')->default('pending');  // Request status (pending/approved/rejected)
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_supply_request');
+        Schema::dropIfExists('supply_requests');
     }
 };
